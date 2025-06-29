@@ -31,8 +31,8 @@ CREATE TABLE therapists (
                             role           VARCHAR(30),
                             username       VARCHAR(50)  NOT NULL UNIQUE,
                             password_hash  VARCHAR(255) NOT NULL,
-                            date_created   DATETIME DEFAULT CURRENT_TIMESTAMP,
-                            last_login     DATETIME,
+                            date_created   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                            last_login     TIMESTAMP,
                             active_status  BOOLEAN DEFAULT TRUE
 );
 
@@ -43,7 +43,7 @@ CREATE TABLE intake_forms (
                               therapist_id   BIGINT,
                               date_submitted DATE,
                               practiced_yoga_before BOOLEAN,
-                              last_practiced_date   VARCHAR(50),
+                              last_practiced_date   DATE,
                               yoga_frequency        VARCHAR(30),
                               yoga_styles           TEXT,
                               yoga_style_other      VARCHAR(100),
@@ -62,13 +62,13 @@ CREATE TABLE intake_forms (
 CREATE TABLE intake_form_health_history (
                                             id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                             intake_form_id BIGINT NOT NULL UNIQUE,
-                                            broken_bones        BOOLEAN,
                                             anxiety_depression  BOOLEAN,
                                             arthritis_bursitis  BOOLEAN,
                                             asthma              BOOLEAN,
                                             autoimmune          BOOLEAN,
                                             back_problems       BOOLEAN,
                                             blood_pressure      BOOLEAN,
+                                            broken_bones        BOOLEAN,
                                             cancer              BOOLEAN,
                                             diabetes            BOOLEAN,
                                             disc_problems       BOOLEAN,
